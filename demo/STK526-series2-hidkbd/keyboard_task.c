@@ -70,17 +70,17 @@ HID_W, HID_E, HID_L, HID_C, HID_O, HID_M, HID_E, HID_SPACEBAR, HID_T, HID_O, HID
 
 
 U8  code    usb_keyup[]= {\
-                        HID_UP, \
-                        };
+                        HID_D, \
+                        };//HID_UP
 U8  code    usb_keydown[]= {\
-                        HID_DOWN, \
-                        };
+                        HID_U, \
+                        };//HID_DOWN
 U8  code    usb_keyright[]= {\
-                        HID_RIGHT, \
-                        };
+                        HID_O, \
+                        };//HID_RIGHT
 U8  code    usb_keyleft[]= {\
                         HID_LEFT, \
-                        };
+                        };//
 
 
 
@@ -144,14 +144,15 @@ void keyboard_task(void)
             if ( transmit_no_key==FALSE)
             {
                transmit_no_key = TRUE;
-               Usb_write_byte(HID_MODIFIER_NONE);  // Byte0: Modifier
+               Usb_write_byte(HID_MODIFIER_LEFT_ALT | HID_MODIFIER_LEFT_CTRL);  // Byte0: Modifier HID_MODIFIER_NONE  HID_MODIFIER_LEFT_CTRL
                Usb_write_byte(0);                  // Byte1: Reserved
-               Usb_write_byte(usb_key);            // Byte2: Keycode 0
-               Usb_write_byte(0);                  // Byte2: Keycode 1
+               Usb_write_byte(0);            // Byte2: Keycode 0
+               Usb_write_byte(usb_key);                  // Byte2: Keycode 1
                Usb_write_byte(0);                  // Byte2: Keycode 2
                Usb_write_byte(0);                  // Byte2: Keycode 3
                Usb_write_byte(0);                  // Byte2: Keycode 4
                Usb_write_byte(0);                  // Byte2: Keycode 5
+			   Usb_write_byte(0);
                Usb_send_in();
                return;
             }
@@ -159,6 +160,7 @@ void keyboard_task(void)
             {
                key_hit = FALSE;
                transmit_no_key = FALSE;
+               Usb_write_byte(HID_MODIFIER_NONE);
                Usb_write_byte(0);
                Usb_write_byte(0);
                Usb_write_byte(0);
@@ -166,7 +168,7 @@ void keyboard_task(void)
                Usb_write_byte(0);
                Usb_write_byte(0);
                Usb_write_byte(0);
-               Usb_write_byte(0);
+			   Usb_write_byte(0);
                Usb_send_in();
             }
          }

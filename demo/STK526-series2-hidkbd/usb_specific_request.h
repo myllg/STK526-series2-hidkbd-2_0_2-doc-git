@@ -73,7 +73,7 @@ Bool  usb_user_get_descriptor    ( U8 , U8 );
 //! Usb HID Report Descriptor Keyboard
 typedef struct {
 #ifdef TG_DESKTOP
-   U8      report[0x3F]; 
+   U8      report[0x3F]; //0x3F 0x72
 #else
    U8      report[0x3B];
 #endif

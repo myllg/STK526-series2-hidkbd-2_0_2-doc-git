@@ -98,26 +98,26 @@
       //! @defgroup STK_5226_joy Joystick Management
       //! Macros to manage Joystick on stk526
       //! @{
-#define  Joy_init()              (DDRB &= ~((1<<PINB7)|(1<<PINB6)|(1<<PINB5)|(1<<PINB4)|(1<<PINB0)), PORTB |= ((1<<PINB7)|(1<<PINB6)|(1<<PINB5)|(1<<PINB4)|(1<<PINB0)))
+#define  Joy_init()              (DDRD &= ~((1<<PIND1)|(1<<PIND3)|(1<<PIND0)|(1<<PIND2)|(1<<PIND4)), PORTD |= ((1<<PIND1)|(1<<PIND3)|(1<<PIND0)|(1<<PIND2)|(1<<PIND4)))
 #define  Push_button_init()      Joy_init()
                                 
 #define  Is_btn_left()           Is_hwb()
-#define  Is_btn_middle()         ((PINB & (1<<PINB0)) ?  FALSE : TRUE)
+#define  Is_btn_middle()         ((PIND & (1<<PIND4)) ?  FALSE : TRUE)
 #define  Is_btn_right()          FALSE
 
-#define  Is_joy_down()           ((PINB & (1<<PINB7)) ?  FALSE : TRUE)
-#define  Is_joy_right()          ((PINB & (1<<PINB6)) ?  FALSE : TRUE)
-#define  Is_joy_up()             ((PINB & (1<<PINB5)) ?  FALSE : TRUE)
-#define  Is_joy_left()           ((PINB & (1<<PINB4)) ?  FALSE : TRUE)
+#define  Is_joy_down()           ((PIND & (1<<PIND1)) ?  FALSE : TRUE)
+#define  Is_joy_right()          ((PIND & (1<<PIND3)) ?  FALSE : TRUE)
+#define  Is_joy_up()             ((PIND & (1<<PIND0)) ?  FALSE : TRUE)
+#define  Is_joy_left()           ((PIND & (1<<PIND2)) ?  FALSE : TRUE)
                                 
 #define  Is_btn_not_left()       Is_not_hwb()
-#define  Is_btn_not_middle()     ((PINB & (1<<PINB0)) ?  TRUE : FALSE)
+#define  Is_btn_not_middle()     ((PIND & (1<<PIND4)) ?  TRUE : FALSE)
 #define  Is_btn_not_right()      TRUE
 
-#define  Is_joy_not_down()       ((PINB & (1<<PINB7)) ?  TRUE : FALSE)
-#define  Is_joy_not_right()      ((PINB & (1<<PINB6)) ?  TRUE : FALSE)
-#define  Is_joy_not_up()         ((PINB & (1<<PINB5)) ?  TRUE : FALSE)
-#define  Is_joy_not_left()       ((PINB & (1<<PINB4)) ?  TRUE : FALSE)
+#define  Is_joy_not_down()       ((PIND & (1<<PIND1)) ?  TRUE : FALSE)
+#define  Is_joy_not_right()      ((PIND & (1<<PIND3)) ?  TRUE : FALSE)
+#define  Is_joy_not_up()         ((PIND & (1<<PIND0)) ?  TRUE : FALSE)
+#define  Is_joy_not_left()       ((PIND & (1<<PIND2)) ?  TRUE : FALSE)
 
 
 //! Enable interrupts for switches (PINB0 and PINB4 to PINB7)

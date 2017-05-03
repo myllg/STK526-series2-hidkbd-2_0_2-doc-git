@@ -108,9 +108,9 @@
             // USB Endpoint 1 descriptor FS
 #define ENDPOINT_NB_1       (EP_KBD_IN | USB_ENDPOINT_IN)
 #define EP_ATTRIBUTES_1     0x03              // BULK = 0x02, INTERUPT = 0x03
-#define EP_IN_LENGTH_1      8
+#define EP_IN_LENGTH_1      9
 #define EP_SIZE_1           EP_IN_LENGTH_1
-#define EP_INTERVAL_1       0x02              // Interrupt polling interval from host
+#define EP_INTERVAL_1       0x01              // Interrupt polling interval from host
 
 
 #define USB_MN_LENGTH         5

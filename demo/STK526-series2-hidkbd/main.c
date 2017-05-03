@@ -123,7 +123,7 @@
 int main(void)
 {
    wdtdrv_disable();
-   Clear_prescaler();
+   //Clear_prescaler();
    scheduler();
    return 0;
 }
@@ -142,7 +142,7 @@ extern "C" {
 #endif
 char __low_level_init()
 {
-  Clear_prescaler();
+  //Clear_prescaler();
   return 1;
 }
 #ifdef __cplusplus
