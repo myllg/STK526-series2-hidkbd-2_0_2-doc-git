@@ -144,7 +144,8 @@ void keyboard_task(void)
             if ( transmit_no_key==FALSE)
             {
                transmit_no_key = TRUE;
-               Usb_write_byte(HID_MODIFIER_LEFT_ALT | HID_MODIFIER_LEFT_CTRL);  // Byte0: Modifier HID_MODIFIER_NONE  HID_MODIFIER_LEFT_CTRL
+			   Usb_write_byte(2);  //report ID
+               Usb_write_byte(1);  // Byte0: Modifier HID_MODIFIER_NONE £» HID_MODIFIER_LEFT_CTRL£»HID_MODIFIER_LEFT_ALT | HID_MODIFIER_LEFT_CTRL
                Usb_write_byte(0);                  // Byte1: Reserved
                Usb_write_byte(0);            // Byte2: Keycode 0
                Usb_write_byte(usb_key);                  // Byte2: Keycode 1
@@ -160,6 +161,7 @@ void keyboard_task(void)
             {
                key_hit = FALSE;
                transmit_no_key = FALSE;
+			   Usb_write_byte(2);  //report ID
                Usb_write_byte(HID_MODIFIER_NONE);
                Usb_write_byte(0);
                Usb_write_byte(0);

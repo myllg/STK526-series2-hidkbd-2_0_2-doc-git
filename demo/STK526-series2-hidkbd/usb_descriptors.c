@@ -174,7 +174,7 @@ code S_usb_hid_report_descriptor_kbd usb_hid_report_descriptor_kbd =
   0x05, 0x01, 
 0x09, 0x06, 
 0xA1, 0x01,
-//0x85, 0x01, 
+0x85, 0x01, 
 0x05, 0x07, 
 0x19, 0xE0, 
 0x29, 0xE7, 
@@ -203,7 +203,7 @@ code S_usb_hid_report_descriptor_kbd usb_hid_report_descriptor_kbd =
 0x19, 0x00, 
 0x29, 0x65, 
 0x81, 0x00, 
-0xC0/*,                          // END_COLLECTION
+0xC0,                          // END_COLLECTION
     0x05, 0x0c,                    // USAGE_PAGE (Consumer Devices)
     0x09, 0x01,                    // USAGE (Consumer Control)
     0xa1, 0x01,                    // COLLECTION (Application)
@@ -226,7 +226,7 @@ code S_usb_hid_report_descriptor_kbd usb_hid_report_descriptor_kbd =
     0x81, 0x02,                    //   INPUT (Data,Var,Abs)
     0x95, 0x06,                    //   REPORT_COUNT (6)
     0x81, 0x01,                    //   INPUT (Cnst,Ary,Abs)
-    0xc0*/
+    0xc0
     
     
     /*0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
