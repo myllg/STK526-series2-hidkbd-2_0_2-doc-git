@@ -54,7 +54,7 @@
 
 //_____ D E F I N I T I O N S ______________________________________________
 
-
+/*
 U8  code    usb_keys[]= {HID_ENTER, \
 HID_W, HID_E, HID_L, HID_C, HID_O, HID_M, HID_E, HID_SPACEBAR, HID_T, HID_O, HID_SPACEBAR, HID_H, HID_I, HID_D, HID_SPACEBAR, HID_K, HID_E, HID_Y, HID_B, HID_O, HID_A, HID_R, HID_D, HID_SPACEBAR, HID_D, HID_E, HID_M, HID_O, HID_SPACEBAR, HID_A, HID_N, HID_D, HID_SPACEBAR, HID_C, HID_O, HID_N, HID_G, HID_R, HID_A, HID_T, HID_U, HID_L, HID_A, HID_T, HID_I, HID_O, HID_N, HID_S, HID_SPACEBAR, HID_F, HID_O, HID_R, HID_SPACEBAR, HID_S, HID_E, HID_L, HID_E, HID_C, HID_T, HID_I, HID_N, HID_G, HID_SPACEBAR, HID_T, HID_H, HID_E, HID_SPACEBAR, HID_A, HID_T, HID_9, HID_0, HID_U, HID_S, HID_B, HID_X, HID_X, HID_X, HID_SPACEBAR, HID_M, HID_I, HID_C, HID_R, HID_O, HID_C, HID_O, HID_N, HID_T, HID_R, HID_O, HID_L, HID_L, HID_E, HID_R, HID_SPACEBAR, HID_F, HID_A, HID_M, HID_I, HID_L, HID_Y, HID_DOT,HID_ENTER,HID_ENTER\
 ,HID_T, HID_H, HID_E, HID_SPACEBAR, HID_A, HID_T, HID_9, HID_0, HID_U, HID_S, HID_B, HID_X, HID_X, HID_X, HID_SPACEBAR,HID_I, HID_S, HID_SPACEBAR, HID_B, HID_A, HID_S, HID_E, HID_D, HID_SPACEBAR,HID_O, HID_N, HID_SPACEBAR, HID_T, HID_H, HID_E, HID_SPACEBAR, HID_A, HID_V, HID_R, HID_SPACEBAR, HID_C, HID_O, HID_R, HID_E, HID_SPACEBAR, HID_W, HID_I, HID_T, HID_H, HID_SPACEBAR, HID_T, HID_H, HID_E, HID_SPACEBAR, HID_F, HID_O, HID_L, HID_L, HID_O, HID_W, HID_I, HID_N, HID_G, HID_SPACEBAR, HID_F, HID_E, HID_A, HID_T, HID_U, HID_R, HID_E, HID_S, HID_ENTER\
@@ -66,21 +66,21 @@ HID_W, HID_E, HID_L, HID_C, HID_O, HID_M, HID_E, HID_SPACEBAR, HID_T, HID_O, HID
 ,HID_SPACEBAR,HID_SPACEBAR,HID_A,HID_N,HID_D,HID_SPACEBAR,HID_M,HID_O,HID_R,HID_E,HID_DOT,HID_DOT,HID_DOT,HID_ENTER\
 ,HID_E,HID_N,HID_J,HID_O,HID_Y,HID_SPACEBAR,HID_Y,HID_O,HID_U,HID_R,HID_SPACEBAR,HID_T,HID_I,HID_M,HID_E,HID_SPACEBAR,HID_W,HID_I,HID_T,HID_H,HID_SPACEBAR,HID_A,HID_T,HID_M,HID_E,HID_L,HID_SPACEBAR,HID_P,HID_R,HID_O,HID_D,HID_U,HID_C,HID_T,HID_S,HID_DOT,HID_DOT,HID_DOT\
                            };
-
-
+*/
+U8  code    usb_keys[]= {0x10};
 
 U8  code    usb_keyup[]= {\
-                        HID_D, \
-                        };//HID_UP
+                        0x01, \ 
+                        };//HID_UP HID_D vol up
 U8  code    usb_keydown[]= {\
-                        HID_U, \
-                        };//HID_DOWN
+                        0x02, \  
+                        };//HID_DOWN HID_U  vol dn
 U8  code    usb_keyright[]= {\
-                        HID_O, \
-                        };//HID_RIGHT
+                        0x08, \  
+                        };//HID_RIGHT HID_O bri dn
 U8  code    usb_keyleft[]= {\
-                        HID_LEFT, \
-                        };//
+                        0x04, \  
+                        };//HID_LEFT  bri up
 
 
 
@@ -145,15 +145,14 @@ void keyboard_task(void)
             {
                transmit_no_key = TRUE;
 			   Usb_write_byte(2);  //report ID
-               Usb_write_byte(1);  // Byte0: Modifier HID_MODIFIER_NONE £» HID_MODIFIER_LEFT_CTRL£»HID_MODIFIER_LEFT_ALT | HID_MODIFIER_LEFT_CTRL
+               Usb_write_byte(usb_key);  // Byte0: Modifier HID_MODIFIER_NONE £» HID_MODIFIER_LEFT_CTRL£»HID_MODIFIER_LEFT_ALT | HID_MODIFIER_LEFT_CTRL
                Usb_write_byte(0);                  // Byte1: Reserved
                Usb_write_byte(0);            // Byte2: Keycode 0
-               Usb_write_byte(usb_key);                  // Byte2: Keycode 1
+               Usb_write_byte(0);                  // Byte2: Keycode 1
                Usb_write_byte(0);                  // Byte2: Keycode 2
                Usb_write_byte(0);                  // Byte2: Keycode 3
                Usb_write_byte(0);                  // Byte2: Keycode 4
                Usb_write_byte(0);                  // Byte2: Keycode 5
-			   Usb_write_byte(0);
                Usb_send_in();
                return;
             }
@@ -170,7 +169,6 @@ void keyboard_task(void)
                Usb_write_byte(0);
                Usb_write_byte(0);
                Usb_write_byte(0);
-			   Usb_write_byte(0);
                Usb_send_in();
             }
          }

@@ -212,12 +212,12 @@ code S_usb_hid_report_descriptor_kbd usb_hid_report_descriptor_kbd =
     0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
     0x25, 0x01,                    //   LOGICAL_MAXIMUM (1)
     0x75, 0x01,                    //   REPORT_SIZE (1)
-    0x95, 0x0A,                    //   REPORT_COUNT (16)
+    0x95, 0x0a,                    //   REPORT_COUNT (16)
     0x09, 0xe9,                    //   USAGE (Volume Up)
     0x09, 0xea,                    //   USAGE (Volume Down)
-    0x09, 0xb7,                    //   USAGE (Unassigned)
-    0x09, 0xcd,                    //   USAGE (Unassigned)
-    0x09, 0xe2,                    //   USAGE (Unassigned)
+    0x09, 0x6f,                    //   USAGE (Unassigned)0xb7
+    0x09, 0x70,                    //   USAGE (Unassigned) 0xcd,
+    0x09, 0x72,                    //   USAGE (Unassigned)
     0x09, 0xb5,                    //   USAGE (Scan Next Track)
     0x0A, 0x2A, 0x02,                    //   USAGE (Unassigned)
     0x0A, 0x26, 0x02,                    //   USAGE (Unassigned)
